@@ -1,0 +1,34 @@
+.post {
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 20px;
+
+  h2 {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  .url {
+    margin-bottom: 10px;
+
+    a {
+      color: #999999;
+    }
+  }
+
+  .tagline {
+    margin-bottom: 10px;
+  }
+
+  footer {
+    color: #999999;
+  }
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
