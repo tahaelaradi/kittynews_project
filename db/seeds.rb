@@ -5,9 +5,9 @@ ryan = User.create!(
   password_confirmation: 'password',
 )
 
-ves = User.create!(
-  name: 'Ves',
-  email: 'ves@example.com',
+rado = User.create!(
+  name: 'Rado',
+  email: 'rado@example.com',
   password: 'password',
   password_confirmation: 'password',
 )
@@ -35,7 +35,7 @@ angellist = Post.create!(
   title: 'AngelList',
   tagline: 'Invest in Startups',
   url: 'https://angel.co',
-  user: ves,
+  user: rado,
 )
 
 Post.create!(
@@ -45,40 +45,26 @@ Post.create!(
   user: bob,
 )
 
-ph_ryan_parent = Comment.create!(
+Comment.create!(
   text: 'Introducing a new experiment...',
   post: producthunt,
   user: ryan,
 )
 
 Comment.create!(
-  text: "Ves in Ryan's thread",
-  post: producthunt,
-  parent: ph_ryan_parent,
-  user: ves,
-)
-
-Comment.create!(
   text: 'I cannot stop browsing!',
   post: producthunt,
-  user: ves,
-)
-
-Comment.create!(
-  text: "Bob in Ryan's thread",
-  post: producthunt,
-  parent: ph_ryan_parent,
-  user: bob,
+  user: rado,
 )
 
 Comment.create!(
   text: 'Wow, just discovered a new app!',
   post: producthunt,
-  user: ves,
+  user: rado,
 )
 
 Comment.create!(
   text: 'Time to start investing!',
   post: angellist,
-  user: ves,
+  user: rado,
 )

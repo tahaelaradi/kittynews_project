@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: 'posts#index'
-
-  resources :posts, only: %(show) do
-    resources :comments, only: %(index)
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
+
+  post "/graphql", to: "graphql#execute"
+
+  devise_for :users
+
+  resources :posts, only: %(show)
+
+  root to: 'posts#index'
 end

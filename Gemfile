@@ -6,22 +6,23 @@ git_source(:github) do |repo_name|
 end
 
 gem 'pg'
-gem 'rails', '~> 5.1.4'
+gem 'rails'
 
-gem 'jbuilder', '~> 2.5'
-gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
+gem 'puma', '5.0.4'
+gem 'sass-rails', '6.0.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker'
+gem 'webpacker', '5.1.1'
 
 gem 'devise'
-gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 
 gem 'validate_url'
 
+gem 'graphql'
+gem 'graphiql-rails'
+
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug'
   gem 'dotenv-rails', github: 'bkeepers/dotenv'
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails'
@@ -29,15 +30,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'selenium-webdriver', '3.11.0'
-  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'database_cleaner'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

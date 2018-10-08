@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Posts' do
-  scenario 'Displaying the posts on the homepage' do
+  scenario 'Displaying the posts on the homepage', js: true do
     post_1 = create :post
     post_2 = create :post
 
@@ -17,8 +17,8 @@ feature 'Posts' do
     visit root_path
     click_on post.title
 
-    expect(page).to have_content post.title
-    expect(page).to have_content post.tagline
-    expect(page).to have_content 'Comments'
+    expect(page).to have_content 'comments'
+    expect(page).to have_content(post.title), 'Not implemented yet. Implement as part of task 2.'
+    expect(page).to have_content(post.tagline), 'Not implemented yet. Implement as part of task 2.'
   end
 end

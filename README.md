@@ -1,32 +1,74 @@
+# Kittynews 😼
+
+### Task 1
+
+Add Vote/Unvote button to posts.
+
+On the homepage, there is an inactive vote button.
+
+* Click by an unlogged user should redirect to the login page
+* Click by a logged in user should create a vote
+* Click on an already voted post should remove the vote
+* Visually mark which posts the user have voted on
+* Use GraphQL for fetching and updating the data
+
+### Task 2
+
+Show post information & comments on post page:
+
+http://localhost:3000/posts/1
+
+* Use GraphQL for fetching and updating the data
+
+### Task 3
+
+*Can't tell you yet* 😸 🙊
+
+This will be the task during the pair-programming session.
+
+## Criteria:
+
+**Getting to a working solution is most important**.
+
+After that we look for:
+
+- Database design
+- Performance
+- Dealing with GraphQL N+1
+- Tests
+- Best practices for Ruby, React, GraphQL
+
+---
+
 ## Requirements
 
-- PostgreSQL 9.6
-- Ruby 2.5
-- bundler 1.16 (or higher if available)
-- yarn 1.9 (or higher if available)
+- PostgreSQL 13
+- Ruby 2.7.5
+- bundler
+- yarn
+- Docker and docker-compose
 
 ## Setup
-
-Start PostgreSQL and update the database uri:
-
-```
-$ $EDITOR .env
-```
 
 Install the app dependencies:
 
 ```
-$ gem install bundler
-$ brew install yarn
+gem install bundler
+brew install yarn
 
-$ bundle install
-$ yarn install
+bin/setup
+```
+
+Start PostgreSQL via Docker *(and keep in background)*
+
+```
+docker-compose up -d
 ```
 
 Setup the database:
 
 ```
-bundle exec rake db:create db:migrate db:seed
+bundle exec rails db:create db:migrate db:seed db:test:prepare
 ```
 
 Start the server:
@@ -43,41 +85,23 @@ To run all tests:
 bundle exec rspec
 ```
 
-## Background
+## Running the app
 
-Open the webapp:
+Open the app:
 
 ```
-$ open http://localhost:3000
+http://localhost:3000
 ```
 
 Sign in as:
 
-email: `bob@example.com`
-password: `password`
+* email: `bob@example.com`
+* password: `password`
 
-## Task
+## GraphiQL
 
-Display the comments on the post detail page (/posts/:id).
+[GraphiQL](https://www.npmjs.com/package/graphiql) is installed and can be accessed via:
 
-
-- The top-level comments by the followees of the current user should appear first, the
-  other top-level comments should appear in reverse chronological order
-- The comments should contain the name of the user, the actual text of the
-  comment and their replies
-
-Backend:
-
-- The sorting of the comments should be performed on database level
-
-Frontend:
-
-- The comments should be rendered with React.js
-
-Criteria:
-
-*Getting to a working solution is most important*. After that we look for:
-
-- Performance
-- Tests
-- Best practices
+```
+http://localhost:3000/graphiql
+```
