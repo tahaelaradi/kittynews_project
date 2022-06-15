@@ -1,10 +1,11 @@
 import gql from 'graphql-tag';
 
-export const postsPageQuery = gql`
+export const POSTS_PAGE = gql`
   query PostsPage {
     viewer {
       id
     }
+    canVote
     postsAll {
       id
       title
@@ -12,6 +13,7 @@ export const postsPageQuery = gql`
       url
       commentsCount
       votesCount
+      isVotedByCurrentUser
     }
   }
 `;

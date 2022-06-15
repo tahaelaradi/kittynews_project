@@ -11,7 +11,8 @@ const Post = ({post, handleVoteUpdate}) => {
             </div>
             <div className="tagline">{post.tagline}</div>
             <footer>
-                <button onClick={() => handleVoteUpdate(post.id)}>🔼 {post.votesCount} </button>
+                <p>{post.isVotedByCurrentUser}</p>
+                <button onClick={() => handleVoteUpdate(post.id)}>{post.isVotedByCurrentUser? '🔽' : '🔼'} {post.votesCount} </button>
                 <button>💬 {post.commentsCount}</button>
             </footer>
         </article>

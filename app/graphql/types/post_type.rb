@@ -7,5 +7,10 @@ module Types
     field :user, UserType, null: false
     field :comments_count, Int, null: false
     field :votes_count, Int, null: false
+    field :is_voted_by_current_user, Boolean, null: false
+
+    def is_voted_by_current_user
+      object.votes.where(user: context[:current_user]).exists?
+    end
   end
 end

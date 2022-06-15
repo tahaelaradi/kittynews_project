@@ -1,15 +1,20 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import {useQuery, useMutation} from 'react-apollo';
 import renderComponent from './utils/renderComponent';
 import Post from "./components/post";
-import {postsPageQuery} from "./queries/postsPage";
-import {updateVoteMutation} from "./mutations/updateVote";
+import {POSTS_PAGE} from "./queries/postsPage";
+import {UPDATE_VOTE} from "./mutations/updateVote";
 
 function PostsIndex() {
-    const {data, loading, error} = useQuery(postsPageQuery);
-    const [updateVote] = useMutation(updateVoteMutation);
+    const {data, loading, error, refetch} = useQuery(POSTS_PAGE);
+    const [updateVote, {voteUpdate}] = useMutation(UPDATE_VOTE);
+
+    useEffect(() => refetch(), [voteUpdate])
 
     const handleVoteUpdate = id => {
+        if(!data.canVote){
+            window.location.href = "users/sign_in";
+        }
         updateVote({variables: {postId: id}});
     }
 
