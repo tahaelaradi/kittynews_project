@@ -14,13 +14,6 @@ export const POST_PAGE = gql`
       user {
         name
       }
-      comments {
-        id
-        text
-        user {
-         name
-        }
-      }
     }
 }
 `;
