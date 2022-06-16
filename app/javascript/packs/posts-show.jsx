@@ -4,6 +4,7 @@ import {useMutation, useQuery} from 'react-apollo';
 import {POST_PAGE} from "./queries/postPage";
 import {UPDATE_VOTE} from "./mutations/updateVote";
 import {useEffect} from "react";
+import Comment from "./components/comment";
 
 function PostsShow({postId}) {
     const {data, loading, error, refetch} = useQuery(POST_PAGE, {variables: {postId: postId}});
@@ -45,11 +46,7 @@ function PostsShow({postId}) {
                 </article>
             </div>
             <div className="box">
-                {post.comments.map((item) => (
-                    <div key={item.id}>
-                        <div><strong>{item.user.name}</strong> {item.text}</div>
-                    </div>
-                ))}
+                {post.comments.map((comment) => (<Comment key={comment.id} comment={comment}/>))}
                 <strong></strong>
             </div>
         </>
