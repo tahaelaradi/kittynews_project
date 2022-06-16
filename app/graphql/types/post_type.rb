@@ -10,6 +10,12 @@ module Types
     field :votes_count, Int, null: false
     field :is_voted_by_current_user, Boolean, null: false
 
+    # Note: We should fetch user using batch loader but only if necessary
+    # Eg: If we want to display any user info in Post-Index page
+    # def user
+    #   RecordLoader.for(User).load(object.user_id)
+    # end
+
     def is_voted_by_current_user
       object.votes.where(user: context[:current_user]).exists?
     end

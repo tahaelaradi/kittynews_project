@@ -20,6 +20,7 @@ gem 'validate_url'
 
 gem 'graphql'
 gem 'graphiql-rails'
+gem 'graphql-batch'
 
 group :development, :test do
   gem 'byebug'
