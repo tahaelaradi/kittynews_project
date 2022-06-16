@@ -5,7 +5,7 @@ module Types
       field :user, UserType, null: false
 
       def user
-        RecordLoader.for(User).load(object.user_id)
+        Loaders::RecordLoader.for(User).load(object.user_id)
       end
     end
   end
